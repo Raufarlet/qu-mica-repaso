@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Química 4º ESO · Guía de Repaso</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0f13;
+    --surface: #18181f;
+    --surface2: #22222c;
+    --border: #2e2e3d;
+    --accent: #e8c56d;
+    --accent2: #6d9ee8;
+    --accent3: #6de8b4;
+    --accent4: #e86d9e;
+    --text: #e8e8f0;
+    --muted: #8888a0;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, #1a1a28 0%, #0f0f18 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%;
+    transform: translateX(-50%);
+    width: 500px; height: 300px;
+    background: radial-gradient(ellipse, rgba(232,197,109,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+    position: relative;
+  }
+  header p {
+    color: var(--muted);
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* NAV TABS */
+  nav {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  nav button {
+    flex-shrink: 0;
+    padding: 1rem 1.4rem;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+  }
+  nav button:hover { color: var(--text); }
+  nav button.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* SECTIONS */
+  section { display: none; padding: 2.5rem 1.5rem; max-width: 920px; margin: 0 auto; }
+  section.active { display: block; }
+
+  /* CARDS */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .card-title .num {
+    background: var(--accent);
+    color: var(--bg);
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* THEORY BLOCKS */
+  .theory-block {
+    background: var(--surface2);
+    border-left: 3px solid var(--accent2);
+    border-radius: 0 10px 10px 0;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .theory-block h3 {
+    color: var(--accent2);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .theory-block.green { border-left-color: var(--accent3); }
+  .theory-block.green h3 { color: var(--accent3); }
+  .theory-block.pink { border-left-color: var(--accent4); }
+  .theory-block.pink h3 { color: var(--accent4); }
+  .theory-block.yellow { border-left-color: var(--accent); }
+  .theory-block.yellow h3 { color: var(--accent); }
+
+  /* FORMULA PILLS */
+  .formula {
+    display: inline-block;
+    background: #1e1e2e;
+    border: 1px solid #3a3a55;
+    border-radius: 8px;
+    padding: 0.3rem 0.9rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.92rem;
+    color: #c0d8ff;
+    margin: 0.2rem 0.1rem;
+  }
+  .formula-big {
+    display: block;
+    background: #12121e;
+    border: 1px solid #3a3a55;
+    border-radius: 10px;
+    padding: 1rem 1.4rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 1rem;
+    color: #b0ccff;
+    margin: 0.6rem 0;
+    text-align: center;
+  }
+
+  /* FORMULA GRID */
+  .formula-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  .formula-card {
+    background: #12121e;
+    border: 1px solid #2a2a42;
+    border-radius: 12px;
+    padding: 1.1rem 1.3rem;
+  }
+  .formula-card .name {
+    color: var(--accent3);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .formula-card .eq {
+    font-family: 'DM Mono', monospace;
+    font-size: 1rem;
+    color: #b0ccff;
+  }
+  .formula-card .desc {
+    color: var(--muted);
+    font-size: 0.82rem;
+    margin-top: 0.4rem;
+  }
+
+  /* EXERCISES */
+  .exercise {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 1.4rem;
+    overflow: hidden;
+  }
+  .exercise-head {
+    padding: 1.1rem 1.5rem;
+    background: var(--surface2);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .ex-num {
+    background: var(--accent2);
+    color: var(--bg);
+    font-weight: 700;
+    font-size: 0.78rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+  .ex-num.green { background: var(--accent3); }
+  .ex-num.yellow { background: var(--accent); }
+  .ex-num.pink { background: var(--accent4); }
+  .exercise-body { padding: 1.3rem 1.5rem; }
+
+  /* SOLUTION */
+  .solution {
+    margin-top: 1rem;
+    border-top: 1px dashed var(--border);
+    padding-top: 1rem;
+  }
+  .sol-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--accent3);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .sol-toggle:hover { background: rgba(109,232,180,0.08); border-color: var(--accent3); }
+  .sol-content {
+    display: none;
+    margin-top: 1rem;
+    background: rgba(109,232,180,0.05);
+    border: 1px solid rgba(109,232,180,0.2);
+    border-radius: 10px;
+    padding: 1.1rem 1.4rem;
+  }
+  .sol-content.open { display: block; }
+  .sol-content p, .sol-content li { color: #b0f0d4; font-size: 0.93rem; }
+  .sol-content .result {
+    font-family: 'DM Mono', monospace;
+    font-size: 1.05rem;
+    color: var(--accent3);
+    font-weight: 600;
+    margin-top: 0.4rem;
+  }
+
+  /* INTERNET SOURCE BADGE */
+  .source-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(232,197,109,0.1);
+    border: 1px solid rgba(232,197,109,0.3);
+    border-radius: 20px;
+    padding: 0.2rem 0.8rem;
+    font-size: 0.75rem;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.8rem;
+  }
+
+  /* MISC */
+  ul, ol { padding-left: 1.4rem; }
+  li { margin-bottom: 0.3rem; }
+  p { margin-bottom: 0.7rem; }
+  strong { color: var(--text); font-weight: 600; }
+  .highlight { color: var(--accent); font-weight: 600; }
+  .highlight2 { color: var(--accent2); }
+  .highlight3 { color: var(--accent3); }
+  .tag {
+    display: inline-block;
+    background: rgba(109,158,232,0.15);
+    color: var(--accent2);
+    border-radius: 5px;
+    font-size: 0.75rem;
+    padding: 0.1rem 0.5rem;
+    font-weight: 600;
+    margin-right: 0.3rem;
+  }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+  .section-subtitle {
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin-bottom: 2rem;
+  }
+  .reaction {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.95rem;
+    background: #12121e;
+    border: 1px solid #2a2a42;
+    padding: 0.7rem 1.1rem;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+    color: #c8d8ff;
+  }
+  .table-wrap { overflow-x: auto; margin: 0.8rem 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  th { background: var(--surface2); color: var(--accent); padding: 0.7rem 1rem; text-align: left; font-weight: 600; }
+  td { padding: 0.6rem 1rem; border-top: 1px solid var(--border); color: var(--text); }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media(max-width:600px){ .grid2 { grid-template-columns: 1fr; } }
+  .note {
+    background: rgba(232,109,158,0.08);
+    border: 1px solid rgba(232,109,158,0.25);
+    border-radius: 10px;
+    padding: 0.9rem 1.2rem;
+    font-size: 0.88rem;
+    color: #f0b0d0;
+    margin: 0.8rem 0;
+  }
+  .note::before { content: '⚠️  '; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Química · 4º ESO</h1>
+  <p>Guía completa de repaso · Estequiometría · Gases · Ácido-base · Orgánica</p>
+</header>
+
+<nav>
+  <button class="active" onclick="show('teoria',this)">📚 Teoría</button>
+  <button onclick="show('formulas',this)">🔢 Fórmulas</button>
+  <button onclick="show('ejercicios',this)">✏️ Ejercicios propios</button>
+  <button onclick="show('internet',this)">🌐 Ejercicios de internet</button>
+</nav>
+
+<!-- ================================================ TEORÍA ================================================ -->
+<section id="teoria" class="active">
+  <p class="section-title">Teoría esencial</p>
+  <p class="section-subtitle">Todo lo que debes saber extraído del examen y ampliado al nivel 4º ESO</p>
+
+  <!-- BLOQUE 1: ESTEQUIOMETRÍA -->
+  <div class="card">
+    <div class="card-title"><span class="num">1</span> Estequiometría y el mol</div>
+
+    <div class="theory-block">
+      <h3>El mol y el número de Avogadro</h3>
+      <p>El <strong>mol</strong> es la unidad de cantidad de sustancia del SI. Un mol contiene exactamente <span class="highlight">6,022 × 10²³ entidades</span> (átomos, moléculas, iones…). Este número se llama <strong>número de Avogadro (Nₐ)</strong>.</p>
+      <ul>
+        <li>1 mol de C = 6,022 × 10²³ átomos de C</li>
+        <li>1 mol de CH₄ = 6,022 × 10²³ moléculas de CH₄</li>
+        <li>1 mol de CH₄ contiene 4 mol de H → 4 × 6,022 × 10²³ átomos de H</li>
+      </ul>
+    </div>
+
+    <div class="theory-block">
+      <h3>Masa molar (M)</h3>
+      <p>La <strong>masa molar</strong> es la masa en gramos de un mol de sustancia. Se calcula sumando las masas atómicas de todos los átomos.</p>
+      <p>Ejemplo: CH₄ → M = 12 + 4×1 = <span class="highlight">16 g/mol</span></p>
+      <p>Fe₂(SO₄)₃ → M = 2×55,85 + 3×(32 + 4×16) = 111,7 + 3×96 = <span class="highlight">399,7 g/mol</span></p>
+    </div>
+
+    <div class="theory-block">
+      <h3>Factor de conversión (regla de tres estequiométrica)</h3>
+      <p>Para resolver problemas se encadenan factores de conversión:</p>
+      <div class="formula-big">átomos ÷ Nₐ → moles → × M → gramos</div>
+      <p>Siempre debes <strong>respetar los coeficientes estequiométricos</strong> de la reacción ajustada.</p>
+    </div>
+
+    <div class="theory-block yellow">
+      <h3>Ejemplo del examen — Metano (CH₄)</h3>
+      <p><strong>Dado:</strong> 4,8 × 10²⁴ átomos de H. ¿Cuántos átomos de C hay?</p>
+      <p>CH₄ tiene 4 H y 1 C por molécula:</p>
+      <div class="formula-big">4,8×10²⁴ át H × (1 molec CH₄ / 4 át H) × (1 át C / 1 molec CH₄) = 1,2×10²⁴ átomos C</div>
+      <p><strong>Masa total en gramos:</strong></p>
+      <div class="formula-big">4,8×10²⁴ át H × (1 mol CH₄ / 4×Nₐ) × 16 g/mol = 31,9 g CH₄</div>
+    </div>
+  </div>
+
+  <!-- BLOQUE 2: REACCIONES -->
+  <div class="card">
+    <div class="card-title"><span class="num">2</span> Ajuste de reacciones químicas</div>
+
+    <div class="theory-block green">
+      <h3>Método de tanteo (inspección)</h3>
+      <p>Se colocan coeficientes enteros delante de cada fórmula para igualar el número de átomos de cada elemento en reactivos y productos. Los subíndices nunca se cambian.</p>
+      <ul>
+        <li>Empieza por los elementos que aparecen en menos compuestos.</li>
+        <li>Deja el H y el O para el final.</li>
+        <li>Comprueba siempre la carga si hay iones.</li>
+      </ul>
+    </div>
+
+    <div class="theory-block yellow">
+      <h3>Ejemplo del examen — Hierro + ácido sulfúrico</h3>
+      <p>Fe reacciona con H₂SO₄ produciendo Fe₂(SO₄)₃ e H₂:</p>
+      <div class="reaction">Sin ajustar: Fe + H₂SO₄ → Fe₂(SO₄)₃ + H₂</div>
+      <div class="reaction">Ajustada:    2 Fe + 3 H₂SO₄ → Fe₂(SO₄)₃ + 3 H₂</div>
+      <p>Verificación: Fe: 2=2 ✓ | S: 3=3 ✓ | O: 12=12 ✓ | H: 6=6 ✓</p>
+    </div>
+
+    <div class="theory-block">
+      <h3>Estados de agregación</h3>
+      <p>En las ecuaciones termoquímicas se indican siempre los estados:</p>
+      <ul>
+        <li><span class="formula">(s)</span> sólido &nbsp;·&nbsp; <span class="formula">(l)</span> líquido &nbsp;·&nbsp; <span class="formula">(g)</span> gas &nbsp;·&nbsp; <span class="formula">(ac)</span> acuoso</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BLOQUE 3: GASES -->
+  <div class="card">
+    <div class="card-title"><span class="num">3</span> Leyes de los gases</div>
+
+    <div class="theory-block green">
+      <h3>Ley del gas ideal</h3>
+      <div class="formula-big">PV = nRT</div>
+      <ul>
+        <li><strong>P</strong> = presión (atm)</li>
+        <li><strong>V</strong> = volumen (L)</li>
+        <li><strong>n</strong> = moles de gas</li>
+        <li><strong>R</strong> = 0,082 atm·L/mol·K</li>
+        <li><strong>T</strong> = temperatura en Kelvin (T = t°C + 273)</li>
+      </ul>
+    </div>
+
+    <div class="theory-block">
+      <h3>Condiciones normales (C.N.)</h3>
+      <p>A <strong>0 °C (273 K) y 1 atm</strong>, 1 mol de cualquier gas ocupa <span class="highlight">22,4 L</span>. Este valor se llama <strong>volumen molar en C.N.</strong></p>
+      <div class="formula-big">V (L) = n (mol) × 22,4 L/mol    [solo en C.N.]</div>
+    </div>
+
+    <div class="theory-block pink">
+      <h3>Ley de Gay-Lussac (volúmenes de reacción)</h3>
+      <p>A igual presión y temperatura, los volúmenes de los gases que intervienen en una reacción son proporcionales a sus coeficientes estequiométricos.</p>
+      <div class="reaction">6 CO₂ (g) + 6 H₂O (l) → C₆H₁₂O₆ (s) + 6 O₂ (g)</div>
+      <p>Si se consumen 3 L de CO₂, se producen <strong>3 L de O₂</strong> (misma relación 6:6 = 1:1).</p>
+    </div>
+  </div>
+
+  <!-- BLOQUE 4: TERMOQUÍMICA -->
+  <div class="card">
+    <div class="card-title"><span class="num">4</span> Termoquímica</div>
+
+    <div class="theory-block yellow">
+      <h3>Reacciones exotérmicas y endotérmicas</h3>
+      <p>Las reacciones pueden absorber o liberar energía (calor):</p>
+      <div class="grid2">
+        <div style="background:#1a1a14;border:1px solid #3a3a20;border-radius:10px;padding:1rem;">
+          <p style="color:#e8c56d;font-weight:600;">⚡ Exotérmica</p>
+          <p>El sistema <strong>libera</strong> calor al entorno. ΔH &lt; 0. El calor aparece como <strong>producto</strong>.<br>Ejemplo: combustión.</p>
+        </div>
+        <div style="background:#141a1a;border:1px solid #203a3a;border-radius:10px;padding:1rem;">
+          <p style="color:#6de8b4;font-weight:600;">❄ Endotérmica</p>
+          <p>El sistema <strong>absorbe</strong> calor del entorno. ΔH &gt; 0. El calor aparece como <strong>reactivo</strong>.<br>Ejemplo: fotosíntesis.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="theory-block">
+      <h3>Ecuación termoquímica de la fotosíntesis</h3>
+      <div class="reaction">6 CO₂ (g) + 6 H₂O (l) + 2800 kJ → C₆H₁₂O₆ (s) + 6 O₂ (g)</div>
+      <p>El calor está <strong>como reactivo</strong> → reacción <strong>endotérmica</strong>. La planta necesita luz solar para que ocurra.</p>
+    </div>
+
+    <div class="theory-block pink">
+      <h3>Cálculo de energía</h3>
+      <div class="formula-big">Energía = n (mol) × ΔH (kJ/mol)</div>
+      <p>Si 0,02 mol de glucosa se forman: E = 0,02 × 2800 = <span class="highlight">56 kJ</span></p>
+    </div>
+  </div>
+
+  <!-- BLOQUE 5: DISOLUCIONES -->
+  <div class="card">
+    <div class="card-title"><span class="num">5</span> Disoluciones y molaridad</div>
+
+    <div class="theory-block green">
+      <h3>Molaridad (concentración molar)</h3>
+      <div class="formula-big">M = moles de soluto / volumen de disolución (L)</div>
+      <p>Unidades: <strong>mol/L</strong> (se lee "molar", símbolo M).</p>
+      <ul>
+        <li>Una disolución 3 M tiene 3 moles de soluto por cada litro.</li>
+        <li>Si M y volumen son conocidos: n = M × V</li>
+      </ul>
+    </div>
+
+    <div class="theory-block yellow">
+      <h3>Ejemplo del examen — H₂SO₄ 3M</h3>
+      <p>Se necesitan 2,145 mol de H₂SO₄. ¿Qué volumen de disolución 3M se necesita?</p>
+      <div class="formula-big">M = n/V  →  3 = 2,145/V  →  V = 2,145/3 = 0,715 L</div>
+    </div>
+  </div>
+
+  <!-- BLOQUE 6: pH -->
+  <div class="card">
+    <div class="card-title"><span class="num">6</span> pH y equilibrio ácido-base</div>
+
+    <div class="theory-block">
+      <h3>Definición de pH</h3>
+      <div class="formula-big">pH = −log [H⁺]</div>
+      <p>Escala de 0 a 14 (a 25°C). pH &lt; 7 → ácido; pH = 7 → neutro; pH &gt; 7 → básico.</p>
+    </div>
+
+    <div class="theory-block">
+      <h3>Relación pH – pOH</h3>
+      <div class="formula-big">pH + pOH = 14 &nbsp;&nbsp;&nbsp; pOH = −log [OH⁻]</div>
+    </div>
+
+    <div class="theory-block green">
+      <h3>Bases fuertes — Ca(OH)₂</h3>
+      <p>Ca(OH)₂ es una base fuerte dihidróxida. Se disocia completamente:</p>
+      <div class="reaction">Ca(OH)₂ → Ca²⁺ + 2 OH⁻</div>
+      <p>Si la concentración de Ca(OH)₂ es 0,05 M:</p>
+      <ul>
+        <li>[OH⁻] = 2 × 0,05 = <strong>0,1 M</strong></li>
+        <li>pOH = −log(0,1) = 1</li>
+        <li>pH = 14 − 1 = <strong>13</strong></li>
+      </ul>
+    </div>
+
+    <div class="theory-block pink">
+      <h3>Ácidos fuertes — HClO₄</h3>
+      <p>El HClO₄ (ácido perclórico) es un ácido fuerte. Se disocia completamente: HClO₄ → H⁺ + ClO₄⁻</p>
+      <p>Si [HClO₄] = 0,1 M → [H⁺] = 0,1 M → pH = 1</p>
+    </div>
+  </div>
+
+  <!-- BLOQUE 7: VALORACIÓN -->
+  <div class="card">
+    <div class="card-title"><span class="num">7</span> Valoración ácido-base (titulación)</div>
+
+    <div class="theory-block">
+      <h3>Principio de la valoración</h3>
+      <p>En el <strong>punto de equivalencia</strong> los moles de ácido equivalen a los de base según la reacción de neutralización.</p>
+      <div class="reaction">Ca(OH)₂ + 2 HClO₄ → Ca(ClO₄)₂ + 2 H₂O</div>
+      <div class="formula-big">n(ácido) × v(ácido) = n(base) × v(base)   [para ácidos/bases fuertes]</div>
+    </div>
+
+    <div class="theory-block yellow">
+      <h3>Material de laboratorio</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Material</th><th>Función</th></tr>
+          <tr><td>Bureta</td><td>Contiene el valorante (ácido). Permite añadir con precisión.</td></tr>
+          <tr><td>Embudo (funnel)</td><td>Facilita rellenar la bureta sin derramarse.</td></tr>
+          <tr><td>Matraz Erlenmeyer</td><td>Contiene la base a valorar. Se puede agitar fácilmente.</td></tr>
+          <tr><td>Soporte universal + pinza</td><td>Sujetan la bureta en posición vertical.</td></tr>
+          <tr><td>Llave de paso</td><td>Regula el goteo del valorante.</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="theory-block green">
+      <h3>Fenolftaleína como indicador</h3>
+      <ul>
+        <li>En medio <strong>básico</strong>: color <strong>rosa/fucsia</strong>.</li>
+        <li>En medio <strong>ácido o neutro</strong>: <strong>incoloro</strong>.</li>
+        <li>El punto final se detecta cuando <strong>una sola gota de ácido hace desaparecer el color rosa</strong> de forma permanente.</li>
+      </ul>
+      <p><strong>Procedimiento:</strong></p>
+      <ol>
+        <li>Se pone la base en el Erlenmeyer con 2-3 gotas de fenolftaleína (se vuelve rosa).</li>
+        <li>Se llena la bureta con el ácido y se anota el volumen inicial.</li>
+        <li>Se abre la llave gota a gota, agitando el Erlenmeyer constantemente.</li>
+        <li>Cuando una sola gota hace que el color rosa desaparezca permanentemente → punto final.</li>
+        <li>Se anota el volumen final para calcular el gasto.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- BLOQUE 8: ORGÁNICA -->
+  <div class="card">
+    <div class="card-title"><span class="num">8</span> Química orgánica — Nomenclatura</div>
+
+    <div class="theory-block">
+      <h3>Cadena principal y prefijos de longitud</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>N° C</th><th>Prefijo</th><th>N° C</th><th>Prefijo</th></tr>
+          <tr><td>1</td><td>met-</td><td>5</td><td>pent-</td></tr>
+          <tr><td>2</td><td>et-</td><td>6</td><td>hex-</td></tr>
+          <tr><td>3</td><td>prop-</td><td>7</td><td>hept-</td></tr>
+          <tr><td>4</td><td>but-</td><td>8</td><td>oct-</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="theory-block green">
+      <h3>Grupos funcionales (orden de prioridad ↓)</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Grupo</th><th>Sufijo/prefijo</th><th>Ejemplo</th></tr>
+          <tr><td>Ácido carboxílico (–COOH)</td><td>-oico / ácido…ico</td><td>Ácido butanoico</td></tr>
+          <tr><td>Éster (–COO–)</td><td>-anoato de alquilo</td><td>Propanoato de metilo</td></tr>
+          <tr><td>Aldehído (–CHO)</td><td>-anal / -dial</td><td>Butanodial</td></tr>
+          <tr><td>Cetona (C=O)</td><td>-anona</td><td>Metilbutanona</td></tr>
+          <tr><td>Alcohol (–OH)</td><td>-anol</td><td>4-pentinol</td></tr>
+          <tr><td>Amina (–NH₂)</td><td>-amina / amino-</td><td>Etilfenilamina</td></tr>
+          <tr><td>Doble enlace (C=C)</td><td>-eno</td><td>Propeno</td></tr>
+          <tr><td>Triple enlace (C≡C)</td><td>-ino</td><td>Oct-4-en-3,5-diino</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="theory-block pink">
+      <h3>Reglas de numeración</h3>
+      <ul>
+        <li>Se numera la cadena desde el extremo que dé la posición más baja al grupo funcional de mayor prioridad.</li>
+        <li>Si hay dobles y triples enlaces: –en–, –in– con su localizador.</li>
+        <li>Los sustituyentes se ordenan alfabéticamente: etil antes que metil.</li>
+        <li>En ciclos: ciclo + prefijo (ciclobutano, ciclohexano…)</li>
+        <li>El benceno como sustituyente: fenil-</li>
+      </ul>
+    </div>
+
+    <div class="theory-block yellow">
+      <h3>Compuestos del examen</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Nombre</th><th>Estructura</th><th>Tipo</th></tr>
+          <tr><td>Propanoato de metilo</td><td>CH₃–CH₂–COO–CH₃</td><td>Éster</td></tr>
+          <tr><td>Metilbutanona</td><td>CH₃–CH(CH₃)–CO–CH₃</td><td>Cetona</td></tr>
+          <tr><td>Etilfenilamina</td><td>C₆H₅–NH–CH₂–CH₃</td><td>Amina secundaria</td></tr>
+          <tr><td>Ácido benzoico</td><td>C₆H₅–COOH</td><td>Ácido aromático</td></tr>
+          <tr><td>Ácido 3-metilhexanoico</td><td>CH₃–CH₂–CH₂–CH(CH₃)–CH₂–COOH</td><td>Ácido</td></tr>
+          <tr><td>Oct-4-en-3,5-diino</td><td>CH₂=CH–C≡C–C≡C–CH₂–CH₃</td><td>Enediino</td></tr>
+          <tr><td>4-pentinol</td><td>HC≡C–CH₂–CH₂–CH₂–OH</td><td>Alcohol+alquino</td></tr>
+          <tr><td>3-etilciclobutanol</td><td>Ciclobutano con OH y CH₂CH₃ en C3</td><td>Cicloalcohol</td></tr>
+          <tr><td>Propeno</td><td>CH₂=CH–CH₃</td><td>Alqueno</td></tr>
+          <tr><td>Butanodial</td><td>OHC–CH₂–CH₂–CHO</td><td>Dialdehído</td></tr>
+          <tr><td>Etilmetilpropilamina</td><td>CH₃CH₂CH₂–N(CH₃)–CH₂CH₃</td><td>Amina terciaria</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================ FÓRMULAS ================================================ -->
+<section id="formulas">
+  <p class="section-title">Formulario completo</p>
+  <p class="section-subtitle">Todas las fórmulas necesarias para el nivel 4º ESO</p>
+
+  <div class="card">
+    <div class="card-title"><span class="num" style="background:var(--accent2)">A</span> Estequiometría y mol</div>
+    <div class="formula-grid">
+      <div class="formula-card">
+        <div class="name">Moles ↔ partículas</div>
+        <div class="eq">n = N / Nₐ</div>
+        <div class="desc">N = número de partículas; Nₐ = 6,022×10²³</div>
+      </div>
+      <div class="formula-card">
+        <div class="name">Moles ↔ masa</div>
+        <div class="eq">n = m / M</div>
+        <div class="desc">m en gramos; M = masa molar (g/mol)</div>
+      </div>
+      <div class="formula-card">
+        <div class="name">Masa molar compuesto</div>
+        <div class="eq">M = Σ (nᵢ · Aᵢ)</div>
+        <div class="desc">nᵢ = nº átomos; Aᵢ = masa atómica</div>
+      </div>
+      <div class="formula-card">
+        <div class="name">Relación estequiométrica</div>
+        <div class="eq">nA / aA = nB / aB</div>
+        <div class="desc">aA, aB = coeficientes ajustados</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="num" style="background:var(--accent3)">B</span> Gases</div>
+    <div class="formula-grid">
+      <div class="formula-card">
+        <div class="name">Gas ideal</div>
+        <div class="eq">PV = nRT</div>
+        <div class="desc">R = 0,082 atm·L/mol·K · T(K) = t°C + 273</div>
+      </div>
+      <div class="formula-card">
+        <div class="name">Volumen molar en C.N.</div>
+        <div class="eq">Vm = 22,4 L/mol</div>
+        <div class="desc">0°C y 1 atm; V = n × 22,4</div>
+      </div>
+      <div class="formula-card">
+        <div class="name">Gay-Lussac (volúmenes)</div>
+        <div class="eq">VA / aA = VB / aB</div>
+        <div class="desc">Solo gases; misma P y T</div>
+      </div>
+      <div class="formula-card">
+        <div class="name">Boyle-Mariotte</div>
+        <div class="eq">P₁V₁ = P₂V₂</div>
+        <div class="desc">T constante</div>
+      </div>
+      <div class="formula-card">
+        <div class="name">Charles (Gay-Lussac I)</div>
+        <div class="eq">V₁/T₁ = V₂/T₂</div>
+        <div class="desc">P constante; T en Kelvin</div>
+      </div>
+      <div class="formula-card">
+        <div class="name">Gay-Lussac II</div>
+        <div class="eq">P₁/T₁ = P₂/T₂</div>
+        <div class="desc">V constante; T en Kelvin</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="num" style="background:var(--accent4)">C</span> Termoquímica</div>
+    <div class="formula-grid">
+      <div class="formula-card">
+        <div class="name">Calor de reacción</div>
+        <div class="eq">Q = n · ΔH</div>
+        <div class="desc">n = moles reaccionados; ΔH en kJ/mol</div>
+      </div>
+      <div class="formula-card">
+        <div class="name">Exotérmica / Endotérmica</div>
+        <div class="eq">ΔH &lt; 0 → exo · ΔH &gt; 0 → endo</div>
+        <div class="desc">Endo: calor como reactivo; Exo: calor como producto</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="num" style="background:var(--accent)">D</span> Disoluciones y pH</div>
+    <div class="formula-grid">
+      <div class="formula-card">
+        <div class="name">Molaridad</div>
+        <div class="eq">M = n / V(L)</div>
+        <div class="desc">n en mol; V en litros</div>
+      </div>
+      <div class="formula-card">
+        <div class="name">Dilución</div>
+        <div class="eq">M₁·V₁ = M₂·V₂</div>
+        <div class="desc">Antes y después de diluir</div>
+      </div>
+      <div class="formula-card">
+        <div class="name">pH</div>
+        <div class="eq">pH = −log [H⁺]</div>
+        <div class="desc">[H⁺] en mol/L</div>
+      </div>
+      <div class="formula-card">
+        <div class="name">pOH</div>
+        <div class="eq">pOH = −log [OH⁻]</div>
+        <div class="desc">[OH⁻] en mol/L</div>
+      </div>
+      <div class="formula-card">
+        <div class="name">Relación pH-pOH</div>
+        <div class="eq">pH + pOH = 14</div>
+        <div class="desc">A 25°C</div>
+      </div>
+      <div class="formula-card">
+        <div class="name">Producto iónico del agua</div>
+        <div class="eq">Kw = [H⁺][OH⁻] = 10⁻¹⁴</div>
+        <div class="desc">A 25°C</div>
+      </div>
+      <div class="formula-card">
+        <div class="name">Concentración desde pH</div>
+        <div class="eq">[H⁺] = 10⁻ᵖᴴ</div>
+        <div class="desc">Inversa del logaritmo</div>
+      </div>
+      <div class="formula-card">
+        <div class="name">Neutralización</div>
+        <div class="eq">nₐ · Vₐ = nᵦ · Vᵦ</div>
+        <div class="desc">nₐ,nᵦ = nº de iones H⁺/OH⁻</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="num" style="background:var(--accent2)">E</span> Constantes y datos útiles</div>
+    <div class="formula-grid">
+      <div class="formula-card">
+        <div class="name">Número de Avogadro</div>
+        <div class="eq">Nₐ = 6,022 × 10²³ mol⁻¹</div>
+      </div>
+      <div class="formula-card">
+        <div class="name">R (gases)</div>
+        <div class="eq">R = 0,082 atm·L/mol·K</div>
+      </div>
+      <div class="formula-card">
+        <div class="name">Masas atómicas clave</div>
+        <div class="eq">H=1 · C=12 · N=14 · O=16 · S=32 · Ca=40 · Fe=55,85</div>
+      </div>
+      <div class="formula-card">
+        <div class="name">Condiciones normales</div>
+        <div class="eq">0°C (273 K) · 1 atm · Vm=22,4 L</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================ EJERCICIOS PROPIOS ================================================ -->
+<section id="ejercicios">
+  <p class="section-title">Ejercicios de práctica</p>
+  <p class="section-subtitle">Ejercicios elaborados para repasar todos los temas del examen</p>
+
+  <!-- ESTEQUIOMETRÍA -->
+  <div class="card">
+    <div class="card-title"><span class="num">I</span> Estequiometría y el mol</div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num">E-1</span>
+        <div>
+          <span class="tag">MOL</span><span class="tag">CONVERSIÓN</span>
+          <p>Una muestra de amoníaco (NH₃) contiene 9,033 × 10²⁴ átomos de hidrógeno. <br>
+          a) ¿Cuántas moléculas de NH₃ hay?<br>
+          b) ¿Cuántos moles de NH₃?<br>
+          c) ¿Cuántos gramos de NH₃ hay en la muestra? (M_N = 14 g/mol, M_H = 1 g/mol)</div>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p><strong>a)</strong> NH₃ tiene 3 H por molécula → moléculas = 9,033×10²⁴ / 3 = <strong>3,011×10²⁴ moléculas</strong></p>
+            <p><strong>b)</strong> n = 3,011×10²⁴ / 6,022×10²³ = <strong>5 mol NH₃</strong></p>
+            <p><strong>c)</strong> M(NH₃) = 14 + 3 = 17 g/mol → m = 5 × 17 = <strong>85 g</strong></p>
+            <div class="result">Respuestas: a) 3,011×10²⁴ moléculas · b) 5 mol · c) 85 g</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num">E-2</span>
+        <div>
+          <span class="tag">MASA MOLAR</span>
+          <p>Calcula la masa molar de:<br>
+          a) H₂SO₄ &nbsp;&nbsp; b) Ca(OH)₂ &nbsp;&nbsp; c) C₆H₁₂O₆ (glucosa) &nbsp;&nbsp; d) Fe₂(SO₄)₃</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p><strong>a)</strong> H₂SO₄: 2×1 + 32 + 4×16 = 2+32+64 = <strong>98 g/mol</strong></p>
+            <p><strong>b)</strong> Ca(OH)₂: 40 + 2×(16+1) = 40+34 = <strong>74 g/mol</strong></p>
+            <p><strong>c)</strong> C₆H₁₂O₆: 6×12 + 12×1 + 6×16 = 72+12+96 = <strong>180 g/mol</strong></p>
+            <p><strong>d)</strong> Fe₂(SO₄)₃: 2×55,85 + 3×(32+4×16) = 111,7 + 288 = <strong>399,7 g/mol</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num">E-3</span>
+        <div>
+          <span class="tag">ESTEQUIOMETRÍA</span>
+          <p>El propano (C₃H₈) se combina con oxígeno según: C₃H₈ + 5 O₂ → 3 CO₂ + 4 H₂O<br>
+          Si quemamos 44 g de propano (M = 44 g/mol):<br>
+          a) ¿Cuántos moles de CO₂ se producen?<br>
+          b) ¿Cuántos gramos de H₂O se producen? (M = 18 g/mol)<br>
+          c) ¿Cuántos litros de O₂ se necesitan a C.N.?</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p>n(C₃H₈) = 44/44 = 1 mol</p>
+            <p><strong>a)</strong> 1 mol C₃H₈ → 3 mol CO₂ → <strong>3 mol CO₂</strong></p>
+            <p><strong>b)</strong> 1 mol C₃H₈ → 4 mol H₂O → 4 × 18 = <strong>72 g H₂O</strong></p>
+            <p><strong>c)</strong> 1 mol C₃H₈ → 5 mol O₂ → 5 × 22,4 = <strong>112 L O₂</strong></p>
+            <div class="result">a) 3 mol CO₂ · b) 72 g H₂O · c) 112 L O₂</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GASES -->
+  <div class="card">
+    <div class="card-title"><span class="num">II</span> Gases</div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num green">G-1</span>
+        <div>
+          <span class="tag">GAS IDEAL</span>
+          <p>Un recipiente de 5 L contiene 0,25 mol de N₂ a 27°C. ¿Cuál es la presión del gas? (R = 0,082 atm·L/mol·K)</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p>T = 27 + 273 = 300 K</p>
+            <p>PV = nRT → P = nRT/V = (0,25 × 0,082 × 300) / 5</p>
+            <div class="result">P = 1,23 atm</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num green">G-2</span>
+        <div>
+          <span class="tag">GAY-LUSSAC</span>
+          <p>En la reacción: 2 H₂ (g) + O₂ (g) → 2 H₂O (g), si se consumen 6 L de H₂ a presión y temperatura constantes, ¿qué volumen de O₂ se necesita y qué volumen de H₂O se produce?</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p>Relación H₂:O₂ = 2:1 → V(O₂) = 6/2 = <strong>3 L O₂</strong></p>
+            <p>Relación H₂:H₂O = 2:2 = 1:1 → V(H₂O) = <strong>6 L H₂O</strong></p>
+            <div class="result">O₂: 3 L · H₂O: 6 L</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num green">G-3</span>
+        <div>
+          <span class="tag">GAS IDEAL</span><span class="tag">ESTEQUIOMETRÍA</span>
+          <p>Se hacen reaccionar 10 g de CaCO₃ (M=100 g/mol) con exceso de HCl según:<br>
+          CaCO₃ + 2 HCl → CaCl₂ + H₂O + CO₂<br>
+          ¿Qué volumen de CO₂ se obtiene a 25°C y 1 atm?</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p>n(CaCO₃) = 10/100 = 0,1 mol → n(CO₂) = 0,1 mol</p>
+            <p>PV = nRT → V = nRT/P = (0,1 × 0,082 × 298) / 1</p>
+            <div class="result">V(CO₂) = 2,44 L</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TERMOQUÍMICA -->
+  <div class="card">
+    <div class="card-title"><span class="num">III</span> Termoquímica</div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num yellow">T-1</span>
+        <div>
+          <span class="tag">ENDOTÉRMICA/EXOTÉRMICA</span>
+          <p>Clasifica como endotérmica o exotérmica e identifica si el calor actúa como reactivo o producto:<br>
+          a) CH₄ + 2 O₂ → CO₂ + 2 H₂O + 890 kJ<br>
+          b) N₂ + O₂ + 182 kJ → 2 NO<br>
+          c) C₆H₁₂O₆ + 6 O₂ → 6 CO₂ + 6 H₂O &nbsp; ΔH = −2803 kJ/mol</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p><strong>a)</strong> Calor como producto → <strong>Exotérmica</strong> (combustión del metano)</p>
+            <p><strong>b)</strong> Calor como reactivo → <strong>Endotérmica</strong></p>
+            <p><strong>c)</strong> ΔH &lt; 0 → <strong>Exotérmica</strong> (respiración celular)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num yellow">T-2</span>
+        <div>
+          <span class="tag">CÁLCULO ENERGÍA</span>
+          <p>La combustión del etanol libera 1370 kJ/mol según: C₂H₅OH + 3 O₂ → 2 CO₂ + 3 H₂O + 1370 kJ<br>
+          a) ¿Cuánta energía se libera al quemar 46 g de etanol? (M = 46 g/mol)<br>
+          b) ¿Cuántos gramos de etanol se deben quemar para liberar 3425 kJ?</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p><strong>a)</strong> n = 46/46 = 1 mol → Q = 1 × 1370 = <strong>1370 kJ</strong></p>
+            <p><strong>b)</strong> n = 3425/1370 = 2,5 mol → m = 2,5 × 46 = <strong>115 g</strong></p>
+            <div class="result">a) 1370 kJ · b) 115 g de etanol</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DISOLUCIONES Y pH -->
+  <div class="card">
+    <div class="card-title"><span class="num">IV</span> Disoluciones y pH</div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num pink">D-1</span>
+        <div>
+          <span class="tag">MOLARIDAD</span>
+          <p>a) Calcula la molaridad de una disolución que contiene 49 g de H₂SO₄ (M=98 g/mol) en 500 mL de disolución.<br>
+          b) ¿Qué volumen de esta disolución contiene 0,5 mol de H₂SO₄?</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p><strong>a)</strong> n = 49/98 = 0,5 mol · V = 0,5 L → M = 0,5/0,5 = <strong>1 M</strong></p>
+            <p><strong>b)</strong> V = n/M = 0,5/1 = <strong>0,5 L = 500 mL</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num pink">D-2</span>
+        <div>
+          <span class="tag">pH</span><span class="tag">BASE FUERTE</span>
+          <p>Calcula el pH de:<br>
+          a) Una disolución de NaOH 0,01 M (NaOH → Na⁺ + OH⁻)<br>
+          b) Una disolución de HCl 0,001 M<br>
+          c) Una disolución de Ba(OH)₂ 0,05 M (Ba(OH)₂ → Ba²⁺ + 2 OH⁻)</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p><strong>a)</strong> [OH⁻] = 0,01 M · pOH = −log(0,01) = 2 · pH = 14−2 = <strong>12</strong></p>
+            <p><strong>b)</strong> [H⁺] = 0,001 M · pH = −log(0,001) = <strong>3</strong></p>
+            <p><strong>c)</strong> [OH⁻] = 2 × 0,05 = 0,1 M · pOH = 1 · pH = 14−1 = <strong>13</strong></p>
+            <div class="result">a) pH=12 · b) pH=3 · c) pH=13</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num pink">D-3</span>
+        <div>
+          <span class="tag">VALORACIÓN</span>
+          <p>Para neutralizar 25 mL de NaOH 0,2 M se gastan 20 mL de HCl. ¿Cuál es la concentración del HCl?<br>
+          La reacción es: NaOH + HCl → NaCl + H₂O</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p>n(NaOH) = 0,025 L × 0,2 mol/L = 0,005 mol</p>
+            <p>Relación 1:1 → n(HCl) = 0,005 mol</p>
+            <p>M(HCl) = 0,005 / 0,020 = <strong>0,25 M</strong></p>
+            <div class="result">M(HCl) = 0,25 M</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORGÁNICA -->
+  <div class="card">
+    <div class="card-title"><span class="num">V</span> Química orgánica</div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num">O-1</span>
+        <div>
+          <span class="tag">NOMENCLATURA</span>
+          <p>Formula los siguientes compuestos orgánicos:<br>
+          a) Ácido pentanoico &nbsp;&nbsp; b) 2-metilbutanal &nbsp;&nbsp; c) Hexan-3-ona<br>
+          d) Butanoato de etilo &nbsp;&nbsp; e) 2-metilpropan-1-ol &nbsp;&nbsp; f) Dimetilamina</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p><strong>a)</strong> CH₃–CH₂–CH₂–CH₂–COOH</p>
+            <p><strong>b)</strong> CH₃–CH(CH₃)–CH₂–CHO</p>
+            <p><strong>c)</strong> CH₃–CH₂–CO–CH₂–CH₂–CH₃</p>
+            <p><strong>d)</strong> CH₃–CH₂–CH₂–COO–CH₂–CH₃</p>
+            <p><strong>e)</strong> (CH₃)₂CH–CH₂–OH</p>
+            <p><strong>f)</strong> (CH₃)₂NH</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num">O-2</span>
+        <div>
+          <span class="tag">NOMBRAR</span>
+          <p>Nombra los siguientes compuestos:<br>
+          a) CH₃–CH₂–CH₂–OH<br>
+          b) CH₃–CO–CH₂–CH₂–CH₃<br>
+          c) CH₃–CH₂–COO–CH₂–CH₃<br>
+          d) CH₂=CH–CH₂–CH₃<br>
+          e) HC≡C–CH₂–CH₂–CH₃</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p><strong>a)</strong> Propan-1-ol (propanol)</p>
+            <p><strong>b)</strong> Pentan-2-ona</p>
+            <p><strong>c)</strong> Propanoato de etilo</p>
+            <p><strong>d)</strong> But-1-eno</p>
+            <p><strong>e)</strong> Pent-1-ino</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num">O-3</span>
+        <div>
+          <span class="tag">AJUSTE + ORGÁNICA</span>
+          <p>La combustión completa del hexano (C₆H₁₄) produce CO₂ y H₂O.<br>
+          a) Escribe y ajusta la reacción de combustión.<br>
+          b) ¿Cuántos gramos de CO₂ se producen al quemar 86 g de hexano? (M_C₆H₁₄ = 86 g/mol; M_CO₂ = 44 g/mol)</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p><strong>a)</strong> 2 C₆H₁₄ + 19 O₂ → 12 CO₂ + 14 H₂O</p>
+            <p><strong>b)</strong> n(C₆H₁₄) = 86/86 = 1 mol → n(CO₂) = 6 mol → m = 6 × 44 = <strong>264 g CO₂</strong></p>
+            <div class="result">a) 2 C₆H₁₄ + 19 O₂ → 12 CO₂ + 14 H₂O · b) 264 g CO₂</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================ EJERCICIOS INTERNET ================================================ -->
+<section id="internet">
+  <p class="section-title">Ejercicios de fuentes externas</p>
+  <p class="section-subtitle">Problemas de estilo selectividad y libros de texto adaptados a 4º ESO</p>
+
+  <div class="card">
+    <div class="card-title"><span class="num">I</span> Estequiometría (estilo PAU)</div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num">P-1</span>
+        <div>
+          <span class="source-badge">📖 Adaptado de examen PAU Galicia</span>
+          <p>El aluminio reacciona con el oxígeno del aire según: 4 Al + 3 O₂ → 2 Al₂O₃. Si se parten de 54 g de aluminio (M=27 g/mol):<br>
+          a) ¿Cuántos moles de Al₂O₃ se forman?<br>
+          b) ¿Cuántos gramos de Al₂O₃ se obtienen? (M=102 g/mol)<br>
+          c) ¿Cuántos litros de O₂ se consumen a C.N.?</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p>n(Al) = 54/27 = 2 mol</p>
+            <p><strong>a)</strong> Rel. Al:Al₂O₃ = 4:2 = 2:1 → n(Al₂O₃) = 2/2 = <strong>1 mol</strong></p>
+            <p><strong>b)</strong> m = 1 × 102 = <strong>102 g</strong></p>
+            <p><strong>c)</strong> Rel. Al:O₂ = 4:3 → n(O₂) = 2×(3/4) = 1,5 mol → V = 1,5 × 22,4 = <strong>33,6 L</strong></p>
+            <div class="result">a) 1 mol · b) 102 g · c) 33,6 L</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num">P-2</span>
+        <div>
+          <span class="source-badge">📖 Tipo libro de texto Anaya 4º ESO</span>
+          <p>El zinc reacciona con HCl: Zn + 2 HCl → ZnCl₂ + H₂. Se hace reaccionar 6,5 g de Zn (M=65 g/mol) con exceso de HCl.<br>
+          a) ¿Cuántos gramos de ZnCl₂ se obtienen? (M=136 g/mol)<br>
+          b) ¿Cuántos litros de H₂ se producen a 27°C y 1 atm?</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p>n(Zn) = 6,5/65 = 0,1 mol</p>
+            <p><strong>a)</strong> n(ZnCl₂) = 0,1 mol → m = 0,1 × 136 = <strong>13,6 g</strong></p>
+            <p><strong>b)</strong> n(H₂) = 0,1 mol · T=300K · V = nRT/P = (0,1 × 0,082 × 300)/1 = <strong>2,46 L</strong></p>
+            <div class="result">a) 13,6 g ZnCl₂ · b) 2,46 L H₂</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="num">II</span> Gases y termoquímica</div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num green">G-1</span>
+        <div>
+          <span class="source-badge">📖 Adaptado de Selectividad Cataluña</span>
+          <p>Un cilindro contiene 80 g de O₂ (M=32 g/mol) a 25°C y una presión de 10 atm. ¿Cuál es el volumen del cilindro?</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p>n = 80/32 = 2,5 mol · T = 298 K</p>
+            <p>V = nRT/P = (2,5 × 0,082 × 298) / 10</p>
+            <div class="result">V = 6,1 L</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num green">G-2</span>
+        <div>
+          <span class="source-badge">📖 Estilo PAU Madrid</span>
+          <p>La reacción de síntesis del amoníaco es: N₂ + 3 H₂ → 2 NH₃ ΔH = −92 kJ/mol<br>
+          a) ¿Es exotérmica o endotérmica? Razona.<br>
+          b) ¿Cuánta energía se libera al producirse 34 g de NH₃? (M=17 g/mol)<br>
+          c) Si se consumen 6 L de N₂ a iguales condiciones de P y T, ¿qué volumen de NH₃ se produce?</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p><strong>a)</strong> ΔH = −92 kJ/mol &lt; 0 → <strong>exotérmica</strong>, libera calor</p>
+            <p><strong>b)</strong> n(NH₃) = 34/17 = 2 mol. La reacción produce 2 mol → Q = 92 kJ (1 mol N₂ → 2 mol NH₃ → 92 kJ)</p>
+            <p>→ Q = (2/2) × 92 = <strong>92 kJ</strong></p>
+            <p><strong>c)</strong> Rel. N₂:NH₃ = 1:2 → 6 L N₂ → <strong>12 L NH₃</strong></p>
+            <div class="result">a) Exotérmica · b) 92 kJ · c) 12 L NH₃</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="num">III</span> Ácido-base y valoración</div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num pink">A-1</span>
+        <div>
+          <span class="source-badge">📖 Adaptado de examen de Castilla y León</span>
+          <p>Para valorar una muestra de KOH de volumen desconocido se gasta una bureta con HNO₃ 0,1 M. Se necesitan 35 mL de ácido para neutralizar 25 mL de base.<br>
+          a) Escribe la reacción de neutralización ajustada.<br>
+          b) Calcula la concentración del KOH.<br>
+          c) ¿Cuál es el pH del KOH antes de la valoración?</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p><strong>a)</strong> KOH + HNO₃ → KNO₃ + H₂O</p>
+            <p><strong>b)</strong> n(HNO₃) = 0,035 × 0,1 = 0,0035 mol → n(KOH) = 0,0035 mol<br>M(KOH) = 0,0035/0,025 = <strong>0,14 M</strong></p>
+            <p><strong>c)</strong> KOH → K⁺ + OH⁻ → [OH⁻] = 0,14 M<br>pOH = −log(0,14) = 0,85 → pH = 14 − 0,85 = <strong>13,15</strong></p>
+            <div class="result">b) M(KOH) = 0,14 M · c) pH = 13,15</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num pink">A-2</span>
+        <div>
+          <span class="source-badge">📖 Tipo libro Edelvives 4º ESO</span>
+          <p>Calcula el pH de las siguientes disoluciones:<br>
+          a) HCl 0,05 M &nbsp;&nbsp; b) NaOH 0,002 M &nbsp;&nbsp; c) H₂SO₄ 0,01 M (H₂SO₄ → 2H⁺ + SO₄²⁻)<br>
+          d) Una disolución que tiene [H⁺] = 3,5 × 10⁻⁴ M</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p><strong>a)</strong> [H⁺] = 0,05 → pH = −log(0,05) = <strong>1,30</strong></p>
+            <p><strong>b)</strong> [OH⁻] = 0,002 → pOH = 2,70 → pH = 14 − 2,70 = <strong>11,30</strong></p>
+            <p><strong>c)</strong> [H⁺] = 2 × 0,01 = 0,02 → pH = −log(0,02) = <strong>1,70</strong></p>
+            <p><strong>d)</strong> pH = −log(3,5×10⁻⁴) = 4 − log(3,5) = 4 − 0,544 = <strong>3,46</strong></p>
+            <div class="result">a) 1,30 · b) 11,30 · c) 1,70 · d) 3,46</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="num">IV</span> Química orgánica (estilo examen)</div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num">O-1</span>
+        <div>
+          <span class="source-badge">📖 Adaptado de examen PAU Aragón</span>
+          <p>Nombra los siguientes compuestos según la IUPAC:<br>
+          a) CH₃–CH(OH)–CH₂–CH₃<br>
+          b) CH₃–CH₂–CH₂–NH₂<br>
+          c) CH₃–CH₂–CHO<br>
+          d) CH₃–CH₂–CH₂–CH₂–COOH<br>
+          e) CH₂=C(CH₃)–CH₂–CH₃</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p><strong>a)</strong> Butan-2-ol</p>
+            <p><strong>b)</strong> Propan-1-amina (propilamina)</p>
+            <p><strong>c)</strong> Propanal</p>
+            <p><strong>d)</strong> Ácido pentanoico</p>
+            <p><strong>e)</strong> 2-metilbut-1-eno</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num">O-2</span>
+        <div>
+          <span class="source-badge">📖 Libro Santillana 4º ESO</span>
+          <p>Formula los siguientes compuestos:<br>
+          a) 3,3-dimetilpentan-2-ona<br>
+          b) Ácido 2-metilpropanoico<br>
+          c) N-etilmetilamina (etilamina secundaria con metilo)<br>
+          d) Pent-2-en-4-ino<br>
+          e) Pentanodioico (ácido glutárico)</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p><strong>a)</strong> CH₃–CO–C(CH₃)₂–CH₂–CH₃</p>
+            <p><strong>b)</strong> (CH₃)₂CH–COOH</p>
+            <p><strong>c)</strong> CH₃–NH–CH₂–CH₃</p>
+            <p><strong>d)</strong> CH₃–CH=CH–CH₂–C≡CH (pero con doble en C2 y triple en C4: CH₃–C≡C–CH=CH–CH₃ numerando de forma que doble=2, triple=4) → CH₃–CH=CH–C≡C–H (pent-2-en-4-ino, doble en 2, triple en 4)</p>
+            <p><strong>e)</strong> HOOC–CH₂–CH₂–CH₂–COOH</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num">O-3</span>
+        <div>
+          <span class="source-badge">📖 Examen modelo Comunidad de Madrid</span>
+          <p>Un compuesto orgánico tiene la fórmula molecular C₄H₈O₂. Escribe la estructura de:<br>
+          a) Un éster con ese número de átomos.<br>
+          b) Un ácido carboxílico con esa fórmula.<br>
+          c) Un hidroxialdehído con esa fórmula.<br>
+          Nombra cada uno.</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p><strong>a)</strong> CH₃–CH₂–COO–CH₃ → <em>Propanoato de metilo</em></p>
+            <p>&nbsp;&nbsp;&nbsp;(o CH₃–COO–CH₂–CH₃ → Etanoato de etilo / acetato de etilo)</p>
+            <p><strong>b)</strong> CH₃–CH₂–CH₂–COOH → <em>Ácido butanoico</em></p>
+            <p><strong>c)</strong> HOCH₂–CH₂–CH₂–CHO → <em>4-hidroxibutanal</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="num">V</span> Problema integrador (estilo examen completo)</div>
+
+    <div class="exercise">
+      <div class="exercise-head">
+        <span class="ex-num yellow">INT-1</span>
+        <div>
+          <span class="source-badge">📖 Problema de síntesis — nivel 4º ESO</span>
+          <p>El carbonato de calcio (CaCO₃, M=100 g/mol) se descompone térmicamente:<br>
+          CaCO₃ (s) + 178 kJ → CaO (s) + CO₂ (g)<br><br>
+          Se calientan 500 g de CaCO₃ (M=100) en un horno.<br>
+          a) ¿Es endotérmica o exotérmica? ¿Por qué?<br>
+          b) ¿Cuántos gramos de CaO (M=56) se producen?<br>
+          c) ¿Qué volumen de CO₂ se produce a 800°C y 1 atm?<br>
+          d) ¿Cuánta energía se necesita para descomponer los 500 g de CaCO₃?</p>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="solution">
+          <button class="sol-toggle" onclick="toggleSol(this)">▶ Mostrar solución</button>
+          <div class="sol-content">
+            <p>n(CaCO₃) = 500/100 = 5 mol</p>
+            <p><strong>a)</strong> El calor aparece como reactivo (se necesita calor para que ocurra) → <strong>endotérmica</strong></p>
+            <p><strong>b)</strong> 1 mol CaCO₃ → 1 mol CaO → m = 5 × 56 = <strong>280 g CaO</strong></p>
+            <p><strong>c)</strong> n(CO₂) = 5 mol · T = 800+273 = 1073 K<br>V = nRT/P = (5 × 0,082 × 1073)/1 = <strong>439,9 L</strong></p>
+            <p><strong>d)</strong> Q = 5 × 178 = <strong>890 kJ</strong></p>
+            <div class="result">a) Endotérmica · b) 280 g CaO · c) 439,9 L CO₂ · d) 890 kJ</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function toggleSol(btn) {
+  const content = btn.nextElementSibling;
+  content.classList.toggle('open');
+  btn.textContent = content.classList.contains('open') ? '▼ Ocultar solución' : '▶ Mostrar solución';
+}
+</script>
+</body>
+</html>
